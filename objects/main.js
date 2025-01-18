@@ -1,4 +1,4 @@
-function getFruit (obj) {
+function getSumFruit(obj) {
 
     let sum = 0;
 
@@ -7,7 +7,6 @@ function getFruit (obj) {
             sum += obj[prop];
         }
     }
-
     return sum;
 }
 
@@ -22,7 +21,27 @@ let bag = {
     cherry: undefined,
 };
 
-console.log(getFruit(bag));
+console.log(getSumFruit(bag));
 
 
+function getSortedArrayFromObject(obj) {
+
+    let filterProps = {};
+    let sortedResult = [];
+
+    for (let prop in obj) {
+        if (+obj[prop]) {
+            filterProps[prop] = obj[prop];
+        }
+    }
+
+    let sortedArray = Object.entries(filterProps).sort((a, b) => b[1] - a[1]);
+
+    for (let i = 0; i < sortedArray.length; i++) {
+        sortedResult.push(sortedArray[i][0])
+    }
+    return sortedResult;
+}
+
+console.log(getSortedArrayFromObject(bag));
 
